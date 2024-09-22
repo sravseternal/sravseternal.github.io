@@ -8,27 +8,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #f8f9fa;
-            --text-color: #333333;
-            --accent-color: #2ecc71;
+            --primary-color: #2c3e50;
+            --secondary-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --background-gradient: linear-gradient(135deg, #2c3e50, #4ca1af);
+            --dark-background: #1e272e;
+            --dark-text: #ecf0f1;
+            --transition-speed: 0.3s;
         }
+
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
         }
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.8;
             color: var(--text-color);
             background-color: var(--secondary-color);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+        a:hover {
+            color: var(--accent-color);
         }
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
         }
+
+        /* Header Styles */
         header {
             background: var(--primary-color);
             color: #ffffff;
@@ -38,45 +58,70 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         nav ul {
             list-style-type: none;
-            padding: 0.5rem 0;
             display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
+            gap: 20px;
         }
         nav ul li a {
             color: #ffffff;
-            text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed);
         }
         nav ul li a:hover {
             color: var(--accent-color);
         }
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #ffffff;
+            transition: color var(--transition-speed);
+        }
+        .theme-toggle:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(135deg, #3498db, #8e44ad);
+            background: var(--background-gradient);
             color: #ffffff;
             padding-top: 80px;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 80, 0.6);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
         }
         .hero-content p {
-            font-size: 1.4rem;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
+
+        /* Section Styles */
         .section {
             padding: 6rem 0;
         }
@@ -90,11 +135,14 @@
         .section-title::after {
             content: '';
             display: block;
-            width: 50px;
-            height: 3px;
+            width: 60px;
+            height: 4px;
             background-color: var(--accent-color);
-            margin: 10px auto 0;
+            margin: 15px auto 0;
+            border-radius: 2px;
         }
+
+        /* Skills and Experience Grid */
         .skills-grid, .experience-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -105,32 +153,28 @@
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
         }
         .skill-item:hover, .experience-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
         .skill-item i, .experience-item i {
             color: var(--accent-color);
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
-        .project {
-            background: #ffffff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease;
-        }
-        .project:hover {
-            transform: translateY(-5px);
-        }
-        .project h3 {
-            color: var(--primary-color);
+        .skill-item h3, .experience-item h3 {
             margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: var(--primary-color);
         }
+        .skill-item p, .experience-item p {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        /* Collapsible Sections */
         .collapsible {
             cursor: pointer;
             background-color: var(--primary-color);
@@ -139,36 +183,205 @@
             border: none;
             text-align: left;
             outline: none;
-            font-size: 18px;
+            font-size: 1.2rem;
             width: 100%;
             border-radius: 5px;
-            margin-top: 15px;
-            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color var(--transition-speed);
         }
         .collapsible:hover {
-            background-color: #2980b9;
+            background-color: #34495e;
+        }
+        .collapsible:after {
+            content: '\f0d7';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: transform var(--transition-speed);
+        }
+        .collapsible.active:after {
+            transform: rotate(180deg);
         }
         .content {
-            padding: 0 18px;
-            display: none;
+            padding: 0 20px;
+            max-height: 0;
             overflow: hidden;
             background-color: #ffffff;
             border-radius: 0 0 5px 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: max-height var(--transition-speed) ease-out;
         }
+        .content.show {
+            max-height: 1000px; /* Arbitrary large value to accommodate content */
+            transition: max-height var(--transition-speed) ease-in;
+        }
+
+        /* Projects Section */
+        .project {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        .project h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .project p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        .project ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .project ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        /* Certifications Image */
+        .certification-img {
+            width: 120px;
+            height: auto;
+            transition: transform var(--transition-speed);
+        }
+        .certification-img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        #contact .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        #contact .contact-info a {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color var(--transition-speed);
+        }
+        #contact .contact-info a:hover {
+            color: var(--accent-color);
+        }
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 0.75rem;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color var(--transition-speed);
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+        .contact-form button {
+            padding: 0.75rem;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+        }
+        .contact-form button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Footer Styles */
         footer {
             background: var(--primary-color);
             color: #ffffff;
             text-align: center;
             padding: 2rem 0;
         }
-        .certification-img {
-            width: 100px;
-            height: auto;
-            transition: transform 0.3s ease;
+        footer a {
+            color: #ffffff;
+            font-weight: 500;
+            transition: color var(--transition-speed);
         }
-        .certification-img:hover {
-            transform: scale(1.1);
+        footer a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Back-to-Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            transition: background-color var(--transition-speed);
+        }
+        #back-to-top:hover {
+            background-color: #c0392b;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: var(--dark-background);
+            color: var(--dark-text);
+        }
+        body.dark-mode header {
+            background: #34495e;
+        }
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+        }
+        body.dark-mode .hero::after {
+            background: rgba(52, 73, 94, 0.6);
+        }
+        body.dark-mode .section-title {
+            color: #ecf0f1;
+        }
+        body.dark-mode .section-title::after {
+            background-color: var(--accent-color);
+        }
+        body.dark-mode .skill-item, body.dark-mode .experience-item, body.dark-mode .project, body.dark-mode .content {
+            background: #2c3e50;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        body.dark-mode .skill-item i, body.dark-mode .experience-item i, body.dark-mode .project h3 {
+            color: var(--accent-color);
+        }
+        body.dark-mode footer {
+            background: #34495e;
+        }
+        body.dark-mode a {
+            color: #ecf0f1;
+        }
+        body.dark-mode a:hover {
+            color: var(--accent-color);
         }
     </style>
 </head>
@@ -187,6 +400,9 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+            <div class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </div>
         </div>
     </header>
 
@@ -242,9 +458,9 @@
         <div class="container">
             <h2 class="section-title">Professional Experience</h2>
 
-            <button class="collapsible">Cloud Engineer - Transaction Analysts</button>
+            <button class="collapsible">Cloud Engineer - Transaction Analysts <i class="fas fa-chevron-down"></i></button>
             <div class="content">
-                <p>Aug 2023 - Current</p>
+                <p><strong>Aug 2023 - Current</strong></p>
                 <ul>
                     <li>Managed Git repositories with effective branching strategies and merging practices.</li>
                     <li>Designed and implemented multi-stage CI/CD pipelines using Jenkins for secure and efficient deployments across multiple accounts and regions.</li>
@@ -256,9 +472,9 @@
                 </ul>
             </div>
 
-            <button class="collapsible">Business Analyst - Dental-Ortho Options</button>
+            <button class="collapsible">Business Analyst - Dental-Ortho Options <i class="fas fa-chevron-down"></i></button>
             <div class="content">
-                <p>Apr 2021 - Jul 2023</p>
+                <p><strong>Apr 2021 - Jul 2023</strong></p>
                 <ul>
                     <li>Led the successful integration of cloud-based systems to streamline operations, enhancing patient management workflows and improving business processes.</li>
                     <li>Collaborated with business leaders and technical teams to implement data-driven strategies that led to a 14% increase in revenue.</li>
@@ -270,9 +486,9 @@
                 </ul>
             </div>
 
-            <button class="collapsible">Business Analyst - Verizon (TechStar group)</button>
+            <button class="collapsible">Business Analyst - Verizon (TechStar group) <i class="fas fa-chevron-down"></i></button>
             <div class="content">
-                <p>Nov 2019 - Aug 2020</p>
+                <p><strong>Nov 2019 - Aug 2020</strong></p>
                 <ul>
                     <li>Gathered and documented business requirements through stakeholder interviews and analysis, translating them into technical specifications for development teams.</li>
                     <li>Managed the full SDLC lifecycle, working with business and technical teams to ensure successful delivery of complex projects.</li>
@@ -283,9 +499,9 @@
                 </ul>
             </div>
 
-            <button class="collapsible">Data Analyst - ZF Group (HCL Tech.)</button>
+            <button class="collapsible">Data Analyst - ZF Group (HCL Tech.) <i class="fas fa-chevron-down"></i></button>
             <div class="content">
-                <p>Dec 2017 - Jan 2019</p>
+                <p><strong>Dec 2017 - Jan 2019</strong></p>
                 <ul>
                     <li>Conducted data analysis and integration to support Master Data Management, using SQL queries and automated data extraction processes to clean and consolidate global supplier databases.</li>
                     <li>Developed data-driven solutions to merge disparate databases, applying Object-Oriented Design principles.</li>
@@ -300,63 +516,112 @@
     <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title">Projects</h2>
-            <div class="project">
-                <h3>Software Developer II - PayPanda StartUp</h3>
-                <p>Jan 2019 - Mar 2021</p>
-                <ul>
-                    <li>Developed and enhanced features of PayPanda, a QR-based payment service provider (PSO) application.</li>
-                    <li>Contributed to the design and development of microservices, front-end interfaces, and integration with various payment gateways.</li>
-                    <li>Designed and implemented RESTful APIs, enabling seamless integration with third party payment providers.</li>
-                    <li>Built responsive and user-friendly front-end components using JavaScript, improving user experience for both merchants and customers.</li>
-                    <li>Employed Docker and AWS to containerize and deploy applications, optimizing the CI/CD pipeline using Jenkins and Maven and GIT in the Linux environment.</li>
-                    <li>Collaborated with cross-functional teams to identify and resolve production issues, ensuring smooth operation of the PayPanda application.</li>
-                </ul>
+            <button class="collapsible">View Projects <i class="fas fa-chevron-down"></i></button>
+            <div class="content">
+                <div class="project">
+                    <h3>Software Developer II - PayPanda StartUp</h3>
+                    <p><strong>Jan 2019 - Mar 2021</strong></p>
+                    <ul>
+                        <li>Developed and enhanced features of PayPanda, a QR-based payment service provider (PSO) application.</li>
+                        <li>Contributed to the design and development of microservices, front-end interfaces, and integration with various payment gateways.</li>
+                        <li>Designed and implemented RESTful APIs, enabling seamless integration with third-party payment providers.</li>
+                        <li>Built responsive and user-friendly front-end components using JavaScript, improving user experience for both merchants and customers.</li>
+                        <li>Employed Docker and AWS to containerize and deploy applications, optimizing the CI/CD pipeline using Jenkins and Maven in the Linux environment.</li>
+                        <li>Collaborated with cross-functional teams to identify and resolve production issues, ensuring smooth operation of the PayPanda application.</li>
+                    </ul>
+                </div>
+                <!-- Add more projects here if needed -->
             </div>
         </div>
     </section>
- <section id="certifications" class="section">
-                <div class="container">
-                    <h2 class="section-title">Certifications</h2>
-                    <p>
-                        <a href="https://www.credly.com/go/AhlgLZ28hrULCeL6N2n2kg" target="_blank">
-                            <img src="https://images.credly.com/size/680x680/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" alt="AWS Certified Cloud Practitioner" style="width: 100px; height: auto;">
-                        </a>
-                        <a href="https://www.credly.com/go/AhlgLZ28hrULCeL6N2n2kg" target="_blank">AWS Certified Cloud Practitioner</a>
-                    </p>
-                </div>
-            </section>
-        
-            <section id="education" class="section">
-                <div class="container">
-                    <h2 class="section-title">Education</h2>
-                    <div class="project">
-                        <h3>SUNY at Stony Brook University</h3>
-                        <p>BS Health Science Informatics</p>
-                    </div>
-                </div>
-            </section>
-        
-            <footer>
-                <div class="container">
-                    <p>Contact: <a href="mailto:sravani.velaga@gmail.com" style="color: white;">sravani.velaga@gmail.com</a> | (240)-733-9066 | <a href="https://www.linkedin.com/in/yourprofile" style="color: white;">LinkedIn</a></p>
-                    <p>Sravani Velaga &copy; 2024</p>
-                </div>
-            </footer>
-        
-            <script>
-                const collapsibles = document.getElementsByClassName("collapsible");
-                for (let i = 0; i < collapsibles.length; i++) {
-                    collapsibles[i].addEventListener("click", function() {
-                        this.classList.toggle("active");
-                        const content = this.nextElementSibling;
-                        if (content.style.display === "block") {
-                            content.style.display = "none";
-                        } else {
-                            content.style.display = "block";
-                        }
-                    });
-                }
-            </script>
-        </body>
-        </html>
-        
+
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                <a href="https://www.credly.com/go/AhlgLZ28hrULCeL6N2n2kg" target="_blank">
+                    <img src="https://images.credly.com/size/680x680/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" alt="AWS Certified Cloud Practitioner" class="certification-img">
+                </a>
+                <a href="https://www.credly.com/go/AhlgLZ28hrULCeL6N2n2kg" target="_blank">AWS Certified Cloud Practitioner</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="project">
+                <h3>SUNY at Stony Brook University</h3>
+                <p>BS Health Science Informatics</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-info">
+                <a href="mailto:sravani.velaga@gmail.com"><i class="fas fa-envelope"></i> sravani.velaga@gmail.com</a>
+                <a href="tel:+12407339066"><i class="fas fa-phone"></i> 240-733-9066</a>
+            </div>
+            <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="_replyto" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Connect with me on <a href="https://www.linkedin.com/in/sravanikv/" target="_blank">LinkedIn</a></p>
+            <p>Sravani Velaga &copy; 2024</p>
+        </div>
+    </footer>
+
+    <button id="back-to-top" aria-label="Back to Top"><i class="fas fa-chevron-up"></i></button>
+
+    <script>
+        // Collapsible Sections
+        const collapsibles = document.querySelectorAll(".collapsible");
+        collapsibles.forEach(button => {
+            button.addEventListener("click", () => {
+                button.classList.toggle("active");
+                const content = button.nextElementSibling;
+                content.classList.toggle("show");
+            });
+        });
+
+        // Back-to-Top Button
+        const backToTopButton = document.getElementById("back-to-top");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        });
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Theme Toggle (Light/Dark Mode)
+        const themeToggle = document.getElementById("theme-toggle");
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            if (document.body.classList.contains("dark-mode")) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // Initialize Theme Based on User Preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add("dark-mode");
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+    </script>
+</body>
+</html>
