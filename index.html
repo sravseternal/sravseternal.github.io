@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags for SEO and Responsiveness -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sravani Velaga - Portfolio</title>
+    <title>Sravani Velaga - Cloud Engineer Portfolio</title>
+    <meta name="description" content="Sravani Velaga's professional portfolio showcasing expertise in Cloud Engineering, Business Analysis, DevOps, and Data Analytics.">
+    <meta name="keywords" content="Cloud Engineer, Business Analyst, DevOps, AWS, Azure, Data Analytics, Portfolio">
+    <meta property="og:title" content="Sravani Velaga - Cloud Engineer Portfolio">
+    <meta property="og:description" content="Explore the professional journey and projects of Sravani Velaga, a seasoned Cloud Engineer and Business Analyst.">
+    <meta property="og:image" content="path_to_your_image.png">
+    <meta property="og:url" content="https://yourportfolio.com">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- AOS Library for Animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Chart.js Library for Interactive Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
+        /* Root Variables for Theming */
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #ecf0f1;
@@ -154,6 +171,7 @@
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            position: relative;
         }
         .skill-item:hover, .experience-item:hover {
             transform: translateY(-5px);
@@ -196,7 +214,7 @@
             background-color: #34495e;
         }
         .collapsible:after {
-            content: '\f0d7';
+            content: '\f0d7'; /* Font Awesome chevron down */
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
             transition: transform var(--transition-speed);
@@ -310,6 +328,14 @@
         .contact-form button:hover {
             background-color: #c0392b;
         }
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            color: var(--accent-color);
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
 
         /* Footer Styles */
         footer {
@@ -341,10 +367,12 @@
             cursor: pointer;
             display: none;
             z-index: 1000;
-            transition: background-color var(--transition-speed);
+            transition: background-color var(--transition-speed), opacity var(--transition-speed);
+            opacity: 0.7;
         }
         #back-to-top:hover {
             background-color: #c0392b;
+            opacity: 1;
         }
 
         /* Dark Mode Styles */
@@ -383,9 +411,27 @@
         body.dark-mode a:hover {
             color: var(--accent-color);
         }
+
+        /* Responsive Enhancements */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .skills-grid, .experience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Header with Navigation and Theme Toggle -->
     <header>
         <div class="container">
             <nav>
@@ -406,7 +452,8 @@
         </div>
     </header>
 
-    <section id="home" class="hero">
+    <!-- Hero Section with AOS Animation -->
+    <section id="home" class="hero" data-aos="fade-in">
         <div class="hero-content">
             <h1>Sravani Velaga</h1>
             <p>Cloud Engineer & Business Analyst</p>
@@ -414,14 +461,16 @@
         </div>
     </section>
 
-    <section id="about" class="section">
+    <!-- About Section with AOS Animation -->
+    <section id="about" class="section" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">Professional Summary</h2>
             <p>A proactive and results-driven professional with over 7 years of experience in business analysis, cloud architecture, functional design, and DevOps automation. Skilled at translating business requirements into scalable technical solutions, leading cross-functional teams, and delivering high-impact cloud and infrastructure projects. Expertise in requirement gathering, writing functional specifications, and driving system enhancements with excellent communication and leadership skills. Proficient in cloud infrastructure, build tools, Linux system administration, and configuration management using Ansible. Strong background in data analysis, Agile methodologies, SQL, and CI/CD pipelines. Passionate about solving complex challenges through innovative, efficient solutions, with a focus on optimizing cloud environments and automating workflows.</p>
         </div>
     </section>
 
-    <section id="skills" class="section">
+    <!-- Skills Section with Interactive Chart and AOS Animation -->
+    <section id="skills" class="section" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">Skills & Expertise</h2>
             <div class="skills-grid">
@@ -451,13 +500,20 @@
                     <p>Java, Python, SQL, Shell, Bash</p>
                 </div>
             </div>
+            <!-- Interactive Skills Chart -->
+            <div class="container" data-aos="fade-up" style="margin-top: 4rem;">
+                <h3 class="section-title">Skills Proficiency</h3>
+                <canvas id="skillsChart" width="400" height="200"></canvas>
+            </div>
         </div>
     </section>
 
-    <section id="experience" class="section">
+    <!-- Experience Section with Collapsible Items and AOS Animation -->
+    <section id="experience" class="section" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">Professional Experience</h2>
 
+            <!-- Collapsible Experience Items -->
             <button class="collapsible">Cloud Engineer - Transaction Analysts <i class="fas fa-chevron-down"></i></button>
             <div class="content">
                 <p><strong>Aug 2023 - Current</strong></p>
@@ -513,7 +569,8 @@
         </div>
     </section>
 
-    <section id="projects" class="section">
+    <!-- Projects Section with GitHub Integration and AOS Animation -->
+    <section id="projects" class="section" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">Projects</h2>
             <button class="collapsible">View Projects <i class="fas fa-chevron-down"></i></button>
@@ -529,25 +586,29 @@
                         <li>Employed Docker and AWS to containerize and deploy applications, optimizing the CI/CD pipeline using Jenkins and Maven in the Linux environment.</li>
                         <li>Collaborated with cross-functional teams to identify and resolve production issues, ensuring smooth operation of the PayPanda application.</li>
                     </ul>
+                    <!-- GitHub Repository Link -->
+                    <p><a href="https://github.com/yourusername/PayPanda" target="_blank"><i class="fab fa-github"></i> View on GitHub</a></p>
                 </div>
                 <!-- Add more projects here if needed -->
             </div>
         </div>
     </section>
 
-    <section id="certifications" class="section">
+    <!-- Certifications Section with Lazy Loaded Images and AOS Animation -->
+    <section id="certifications" class="section" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">Certifications</h2>
             <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
                 <a href="https://www.credly.com/go/AhlgLZ28hrULCeL6N2n2kg" target="_blank">
-                    <img src="https://images.credly.com/size/680x680/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" alt="AWS Certified Cloud Practitioner" class="certification-img">
+                    <img src="https://images.credly.com/size/680x680/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" alt="AWS Certified Cloud Practitioner" class="certification-img" loading="lazy">
                 </a>
                 <a href="https://www.credly.com/go/AhlgLZ28hrULCeL6N2n2kg" target="_blank">AWS Certified Cloud Practitioner</a>
             </div>
         </div>
     </section>
 
-    <section id="education" class="section">
+    <!-- Education Section with AOS Animation -->
+    <section id="education" class="section" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">Education</h2>
             <div class="project">
@@ -557,33 +618,47 @@
         </div>
     </section>
 
-    <section id="contact" class="section">
+    <!-- Contact Section with Enhanced Form and AOS Animation -->
+    <section id="contact" class="section" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">Contact</h2>
             <div class="contact-info">
                 <a href="mailto:sravani.velaga@gmail.com"><i class="fas fa-envelope"></i> sravani.velaga@gmail.com</a>
                 <a href="tel:+12407339066"><i class="fas fa-phone"></i> 240-733-9066</a>
             </div>
-            <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="_replyto" placeholder="Your Email" required>
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
+                <input type="email" name="_replyto" placeholder="Your Email" required aria-label="Your Email">
+                <textarea name="message" rows="5" placeholder="Your Message" required aria-label="Your Message"></textarea>
                 <button type="submit">Send Message</button>
+                <p class="success-message" id="success-message">Thank you! Your message has been sent.</p>
             </form>
         </div>
     </section>
 
+    <!-- Footer Section with Updated LinkedIn Link -->
     <footer>
         <div class="container">
-            <p>Connect with me on <a href="https://www.linkedin.com/in/sravanikv/" target="_blank">LinkedIn</a></p>
+            <p>Connect with me on <a href="https://www.linkedin.com/in/sravanikv/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
             <p>Sravani Velaga &copy; 2024</p>
         </div>
     </footer>
 
+    <!-- Back-to-Top Button -->
     <button id="back-to-top" aria-label="Back to Top"><i class="fas fa-chevron-up"></i></button>
 
+    <!-- AOS Library for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Initialize AOS -->
     <script>
-        // Collapsible Sections
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+
+    <script>
+        // Collapsible Sections Functionality
         const collapsibles = document.querySelectorAll(".collapsible");
         collapsibles.forEach(button => {
             button.addEventListener("click", () => {
@@ -593,20 +668,22 @@
             });
         });
 
-        // Back-to-Top Button
+        // Back-to-Top Button Functionality
         const backToTopButton = document.getElementById("back-to-top");
         window.addEventListener("scroll", () => {
             if (window.scrollY > 300) {
                 backToTopButton.style.display = "block";
+                backToTopButton.style.opacity = "1";
             } else {
                 backToTopButton.style.display = "none";
+                backToTopButton.style.opacity = "0.7";
             }
         });
         backToTopButton.addEventListener("click", () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Theme Toggle (Light/Dark Mode)
+        // Theme Toggle (Light/Dark Mode) Functionality
         const themeToggle = document.getElementById("theme-toggle");
         themeToggle.addEventListener("click", () => {
             document.body.classList.toggle("dark-mode");
@@ -622,6 +699,76 @@
             document.body.classList.add("dark-mode");
             themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
+
+        // Initialize Skills Chart using Chart.js
+        const ctx = document.getElementById('skillsChart').getContext('2d');
+        const skillsChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'Terraform', 'Ansible', 'Jenkins', 'Git', 'SQL', 'Python'],
+                datasets: [{
+                    label: 'Skill Proficiency',
+                    data: [90, 80, 85, 80, 75, 70, 85, 90, 80, 85],
+                    backgroundColor: 'rgba(231,76,60,0.2)',
+                    borderColor: 'rgba(231,76,60,1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(231,76,60,1)',
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 50,
+                        suggestedMax: 100
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            }
+        });
+
+        // Contact Form Submission Handling
+        const contactForm = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Simple form validation can be enhanced as needed
+            const formData = new FormData(contactForm);
+            fetch(contactForm.action, {
+                method: contactForm.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    contactForm.reset();
+                    successMessage.style.display = 'block';
+                } else {
+                    return response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            throw new Error(data["errors"].map(error => error["message"]).join(", "));
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                alert("Oops! Something went wrong.");
+                console.error(error);
+            });
+        });
     </script>
 </body>
 </html>
