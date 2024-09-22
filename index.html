@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sravani Velaga - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #f8f9fa;
+            --text-color: #333333;
+            --accent-color: #2ecc71;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            background: var(--primary-color);
+            color: #ffffff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0.5rem 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: #ffffff;
+            padding-top: 80px;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .hero-content p {
+            font-size: 1.4rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .section {
+            padding: 6rem 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+        }
+        .skills-grid, .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .skill-item, .experience-item {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-item:hover, .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        .skill-item i, .experience-item i {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .project {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+        }
+        .project h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .collapsible {
+            cursor: pointer;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+        .collapsible:hover {
+            background-color: #2980b9;
+        }
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #ffffff;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        footer {
+            background: var(--primary-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        .certification-img {
+            width: 100px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .certification-img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Sravani Velaga</h1>
+            <p>Cloud Engineer & Business Analyst</p>
+            <p>Translating business needs into technical solutions</p>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Summary</h2>
+            <p>A proactive and results-driven professional with over 7 years of experience in business analysis, cloud architecture, functional design, and DevOps automation. Skilled at translating business requirements into scalable technical solutions, leading cross-functional teams, and delivering high-impact cloud and infrastructure projects. Expertise in requirement gathering, writing functional specifications, and driving system enhancements with excellent communication and leadership skills. Proficient in cloud infrastructure, build tools, Linux system administration, and configuration management using Ansible. Strong background in data analysis, Agile methodologies, SQL, and CI/CD pipelines. Passionate about solving complex challenges through innovative, efficient solutions, with a focus on optimizing cloud environments and automating workflows.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud Platforms</h3>
+                    <p>AWS (EC2, VPC, S3, Lambda, CloudFront, RDS, IAM, CloudFormation, CloudWatch, DynamoDB, Route53, SQS, SNS, ECS, EKS), Azure</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-code-branch"></i>
+                    <h3>DevOps</h3>
+                    <p>CI/CD, Jenkins, Maven, SonarQube, GitHub Actions, Azure DevOps, Docker, Kubernetes, Prometheus, Grafana, Ansible</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Business Analysis</h3>
+                    <p>JIRA, Microsoft Project, Visio, Requirements Gathering, Process Optimization</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-database"></i>
+                    <h3>Data Analytics</h3>
+                    <p>SQL, Excel, Tableau, SAS</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-code"></i>
+                    <h3>Programming Languages</h3>
+                    <p>Java, Python, SQL, Shell, Bash</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+
+            <button class="collapsible">Cloud Engineer - Transaction Analysts</button>
+            <div class="content">
+                <p>Aug 2023 - Current</p>
+                <ul>
+                    <li>Managed Git repositories with effective branching strategies and merging practices.</li>
+                    <li>Designed and implemented multi-stage CI/CD pipelines using Jenkins for secure and efficient deployments across multiple accounts and regions.</li>
+                    <li>Architected and managed AWS infrastructure, including EC2, S3, RDS, EKS, Auto Scaling, ELB, Route 53, CloudWatch, Lambda, EBS, VPC, IAM, and DynamoDB for scalable solutions.</li>
+                    <li>Automated provisioning with Terraform for multi-region setups and serverless architectures.</li>
+                    <li>Used EKS for managing containerized applications, including POD management and auto-scaling.</li>
+                    <li>Developed shell scripts and used Ansible for configuration management to streamline administrative tasks and maintain system consistency.</li>
+                    <li>Resolved complex infrastructure issues to ensure high system reliability and uptime.</li>
+                </ul>
+            </div>
+
+            <button class="collapsible">Business Analyst - Dental-Ortho Options</button>
+            <div class="content">
+                <p>Apr 2021 - Jul 2023</p>
+                <ul>
+                    <li>Led the successful integration of cloud-based systems to streamline operations, enhancing patient management workflows and improving business processes.</li>
+                    <li>Collaborated with business leaders and technical teams to implement data-driven strategies that led to a 14% increase in revenue.</li>
+                    <li>Conducted deep-dive analysis using Excel and Tableau to identify business opportunities and improve efficiency across patient services.</li>
+                    <li>Developed automated processes using Python and SQL to optimize data reporting and ensure alignment with healthcare standards.</li>
+                    <li>Spearheaded the redesign of a key business system, enhancing user experience and driving significant growth in website traffic.</li>
+                    <li>Led functional design sessions, recommending screen designs, workflows, and user interface improvements to business stakeholders.</li>
+                    <li>Created and maintained comprehensive project documentation, ensuring all system changes were well-documented and easily accessible.</li>
+                </ul>
+            </div>
+
+            <button class="collapsible">Business Analyst - Verizon (TechStar group)</button>
+            <div class="content">
+                <p>Nov 2019 - Aug 2020</p>
+                <ul>
+                    <li>Gathered and documented business requirements through stakeholder interviews and analysis, translating them into technical specifications for development teams.</li>
+                    <li>Managed the full SDLC lifecycle, working with business and technical teams to ensure successful delivery of complex projects.</li>
+                    <li>Developed comprehensive reports and dashboards using SQL and Excel to provide stakeholders with actionable insights and data-driven recommendations.</li>
+                    <li>Conducted impact analysis to identify risks and opportunities, proposing solutions to optimize processes and systems.</li>
+                    <li>Analyzed evolving business requirements and recommended system enhancements to improve operational efficiency and meet industry standards.</li>
+                    <li>Collaborated with remote teams across multiple regions to ensure timely completion of project tasks, while maintaining high levels of communication and coordination.</li>
+                </ul>
+            </div>
+
+            <button class="collapsible">Data Analyst - ZF Group (HCL Tech.)</button>
+            <div class="content">
+                <p>Dec 2017 - Jan 2019</p>
+                <ul>
+                    <li>Conducted data analysis and integration to support Master Data Management, using SQL queries and automated data extraction processes to clean and consolidate global supplier databases.</li>
+                    <li>Developed data-driven solutions to merge disparate databases, applying Object-Oriented Design principles.</li>
+                    <li>Collaborated with IT teams to ensure data quality and consistency, contributing to data governance and quality assurance best practices.</li>
+                    <li>Produced detailed analytical reports and visualizations to support business intelligence and decision-making, leveraging tools such as Excel and Tableau.</li>
+                    <li>Developed and maintained SQL, PowerShell, and Batch scripts for database management and process automation; extensive experience with Linux-based systems, including server management, configuration, and scripting.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="project">
+                <h3>Software Developer II - PayPanda StartUp</h3>
+                <p>Jan 2019 - Mar 2021</p>
+                <ul>
+                    <li>Developed and enhanced features of PayPanda, a QR-based payment service provider (PSO) application.</li>
+                    <li>Contributed to the design and development of microservices, front-end interfaces, and integration with various payment gateways.</li>
+                    <li>Designed and implemented RESTful APIs, enabling seamless integration with third party payment providers.</li>
+                    <li>Built responsive and user-friendly front-end components using JavaScript, improving user experience for both merchants and customers.</li>
+                    <li>Employed Docker and AWS to containerize and deploy applications, optimizing the CI/CD pipeline using Jenkins and Maven and GIT in the Linux environment.</li>
+                    <li>Collaborated with cross-functional teams to identify and resolve production issues, ensuring smooth operation of the PayPanda application.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+ <section id="certifications" class="section">
+                <div class="container">
+                    <h2 class="section-title">Certifications</h2>
+                    <p>
+                        <a href="https://www.credly.com/go/AhlgLZ28hrULCeL6N2n2kg" target="_blank">
+                            <img src="https://images.credly.com/size/680x680/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" alt="AWS Certified Cloud Practitioner" style="width: 100px; height: auto;">
+                        </a>
+                        <a href="https://www.credly.com/go/AhlgLZ28hrULCeL6N2n2kg" target="_blank">AWS Certified Cloud Practitioner</a>
+                    </p>
+                </div>
+            </section>
+        
+            <section id="education" class="section">
+                <div class="container">
+                    <h2 class="section-title">Education</h2>
+                    <div class="project">
+                        <h3>SUNY at Stony Brook University</h3>
+                        <p>BS Health Science Informatics</p>
+                    </div>
+                </div>
+            </section>
+        
+            <footer>
+                <div class="container">
+                    <p>Contact: <a href="mailto:sravani.velaga@gmail.com" style="color: white;">sravani.velaga@gmail.com</a> | (240)-733-9066 | <a href="https://www.linkedin.com/in/yourprofile" style="color: white;">LinkedIn</a></p>
+                    <p>Sravani Velaga &copy; 2024</p>
+                </div>
+            </footer>
+        
+            <script>
+                const collapsibles = document.getElementsByClassName("collapsible");
+                for (let i = 0; i < collapsibles.length; i++) {
+                    collapsibles[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        const content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        } else {
+                            content.style.display = "block";
+                        }
+                    });
+                }
+            </script>
+        </body>
+        </html>
+        
